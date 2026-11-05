@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="HTML Lists — ordered, unordered, definition lists, nested">
+  <title>Web Security Lab — Lists</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header role="banner">
+    <h1>Web Security Lab Portfolio</h1>
+    <p class="tagline">Lists — Ordered, Unordered, Definition, Nested</p>
+  </header>
+
+  <nav role="navigation" aria-label="Main navigation">
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="forms.html">Forms</a></li>
+      <li><a href="tables.html">Tables</a></li>
+      <li><a href="lists.html" aria-current="page">Lists</a></li>
+      <li><a href="register.html">Register</a></li>
+    </ul>
+  </nav>
+
+  <main role="main">
+    <h2>HTML Lists</h2>
+
+    <section aria-labelledby="ol-heading">
+      <h3 id="ol-heading">Ordered List — Penetration Testing Steps</h3>
+      <ol class="styled-ol">
+        <li>Reconnaissance — gather information about the target</li>
+        <li>Scanning — enumerate open ports, services, and technologies
+          <ol>
+            <li>Port scanning (Nmap)</li>
+            <li>Service version detection</li>
+            <li>Vulnerability scanning (Nikto, ZAP)</li>
+          </ol>
+        </li>
+        <li>Gaining Access — exploit identified vulnerabilities
+          <ol>
+            <li>SQL injection</li>
+            <li>Cross-site scripting</li>
+            <li>Authentication bypass</li>
+          </ol>
+        </li>
+        <li>Maintaining Access — establish persistence (lab only)</li>
+        <li>Reporting — document findings with evidence</li>
+        <li>Remediation — apply and verify fixes</li>
+      </ol>
+    </section>
+
+    <section aria-labelledby="ul-heading">
+      <h3 id="ul-heading">Unordered List — OWASP Top 10 Categories</h3>
+      <ul class="styled-ul">
+        <li>Broken Access Control
+          <ul>
+            <li>Privilege escalation</li>
+            <li>Insecure direct object references (IDOR)</li>
+            <li>Missing function-level access control</li>
+          </ul>
+        </li>
+        <li>Cryptographic Failures
+          <ul>
+            <li>Weak ciphers (RC4, DES)</li>
+            <li>Unencrypted sensitive data</li>
+          </ul>
+        </li>
+        <li>Injection
+          <ul>
+            <li>SQL Injection</li>
+            <li>Command Injection</li>
+            <li>XSS (Cross-Site Scripting)</li>
+            <li>LDAP Injection</li>
+          </ul>
+        </li>
+        <li>Insecure Design</li>
+        <li>Security Misconfiguration</li>
+        <li>Vulnerable &amp; Outdated Components</li>
+        <li>Identification &amp; Authentication Failures</li>
+        <li>Software &amp; Data Integrity Failures</li>
+        <li>Security Logging &amp; Monitoring Failures</li>
+        <li>Server-Side Request Forgery (SSRF)</li>
+      </ul>
+    </section>
+
+    <section aria-labelledby="dl-heading">
+      <h3 id="dl-heading">Definition List — Key Security Terms</h3>
+      <dl>
+        <dt>XSS (Cross-Site Scripting)</dt>
+        <dd>Injection of client-side scripts into web pages viewed by other users. Can steal cookies, deface pages, or redirect users.</dd>
+
+        <dt>SQLi (SQL Injection)</dt>
+        <dd>Insertion of malicious SQL code into queries via unvalidated user input. Can expose, modify, or delete database contents.</dd>
+
+        <dt>CSRF (Cross-Site Request Forgery)</dt>
+        <dd>Attack that tricks a victim's browser into making authenticated requests to a site the victim is logged into.</dd>
+
+        <dt>Allowlist</dt>
+        <dd>A set of explicitly permitted values; anything not on the list is denied. Preferred over blacklisting for input validation.</dd>
+
+        <dt>Prepared Statement</dt>
+        <dd>A parameterized SQL query where user input is passed separately from the SQL structure, preventing injection.</dd>
+
+        <dt>CVSS</dt>
+        <dd>Common Vulnerability Scoring System — a standardized framework for rating the severity of security vulnerabilities on a 0–10 scale.</dd>
+      </dl>
+    </section>
+  </main>
+
+  <footer role="contentinfo">
+    <p>&copy; 2024 Web Security Lab Portfolio — MIT License</p>
+  </footer>
+</body>
+</html>

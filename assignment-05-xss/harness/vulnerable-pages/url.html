@@ -1,0 +1,1 @@
+<!doctype html><meta charset="utf-8"><title>Local XSS lab</title><body><strong>INTENTIONALLY VULNERABLE LOCAL TRAINING FIXTURE — localhost only</strong><h1>url</h1><div id="out"></div><script>const q=new URLSearchParams(location.search).get("q")||location.hash.slice(1);document.querySelector("#out").innerHTML=q;</script></body>

@@ -1,0 +1,115 @@
+# docker-compose.yml — web-security-lab-portfolio
+# All services bind to 127.0.0.1 ONLY. Never expose to internet.
+# Pin exact image tags for reproducibility.
+
+version: "3.9"
+
+services:
+
+  # ── MySQL database (shared by DVWA and custom app) ──────────────────────────
+  mysql:
+    image: mysql:8.0.36
+    container_name: wsl_mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-change_me_root}
+      MYSQL_DATABASE: ${MYSQL_DATABASE:-dvwa}
+      MYSQL_USER: ${MYSQL_USER:-dvwa}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD:-change_me_dvwa}
+    ports:
+      - "127.0.0.1:3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./assignment-01-web-php-http/db/schema.sql:/docker-entrypoint-initdb.d/01-schema.sql:ro
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-p${MYSQL_ROOT_PASSWORD:-change_me_root}"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 30s
+    networks:
+      - lab_net
+
+  # ── DVWA — Damn Vulnerable Web Application ──────────────────────────────────
+  dvwa:
+    image: ghcr.io/digininja/dvwa:latest
+    container_name: wsl_dvwa
+    restart: unless-stopped
+    depends_on:
+      mysql:
+        condition: service_healthy
+    environment:
+      DB_SERVER: mysql
+      DB_PORT: "3306"
+      DB_DATABASE: dvwa
+      DB_USER: ${MYSQL_USER:-dvwa}
+      DB_PASSWORD: ${MYSQL_PASSWORD:-change_me_dvwa}
+      RECAPTCHA_PRIV_KEY: ""
+      RECAPTCHA_PUB_KEY: ""
+      DEFAULT_SECURITY_LEVEL: ${DVWA_SECURITY_LEVEL:-low}
+    ports:
+      - "127.0.0.1:8080:80"
+    networks:
+      - lab_net
+
+  # ── PHP-Apache — custom lab application ─────────────────────────────────────
+  php-apache:
+    build:
+      context: ./assignment-02-server-hosting/infra
+      dockerfile: Dockerfile
+    container_name: wsl_phpapache
+    restart: unless-stopped
+    depends_on:
+      mysql:
+        condition: service_healthy
+    environment:
+      APP_DB_HOST: mysql
+      APP_DB_NAME: webapp
+      APP_DB_USER: ${APP_DB_USER:-webapp}
+      APP_DB_PASSWORD: ${APP_DB_PASSWORD:-change_me_app}
+      APP_SECRET: ${APP_SECRET:-change_me_app_secret_32chars_min}
+    ports:
+      - "127.0.0.1:8081:80"
+      - "127.0.0.1:8082:8082"
+    volumes:
+      - ./assignment-01-web-php-http:/var/www/site-a:ro
+      - ./assignment-05-xss/harness/vulnerable-pages:/var/www/site-b:ro
+    networks:
+      - lab_net
+
+  # ── OWASP ZAP — automated scanner ───────────────────────────────────────────
+  zap:
+    image: ghcr.io/zaproxy/zaproxy:stable
+    container_name: wsl_zap
+    restart: unless-stopped
+    command: zap.sh -daemon -host 0.0.0.0 -port 8090
+      -config api.key=${ZAP_API_KEY:-change_me_zap_key}
+      -config api.addrs.addr.name=.*
+      -config api.addrs.addr.regex=true
+    ports:
+      - "127.0.0.1:8090:8090"
+    networks:
+      - lab_net
+
+  # ── BeEF — Browser Exploitation Framework ───────────────────────────────────
+  beef:
+    image: bcarvajal/beef-xss:latest
+    container_name: wsl_beef
+    restart: unless-stopped
+    environment:
+      BEEF_PASSWORD: ${BEEF_PASSWORD:-change_me_beef}
+    ports:
+      - "127.0.0.1:3000:3000"
+    networks:
+      - lab_net
+
+volumes:
+  mysql_data:
+    driver: local
+
+networks:
+  lab_net:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.28.0.0/16

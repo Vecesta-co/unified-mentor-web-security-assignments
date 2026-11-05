@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="HTML Tables demonstration — semantic markup, colspan, rowspan, responsive">
+  <title>Web Security Lab — Tables</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header role="banner">
+    <h1>Web Security Lab Portfolio</h1>
+    <p class="tagline">Tables — Semantic Markup &amp; Responsive Design</p>
+  </header>
+
+  <nav role="navigation" aria-label="Main navigation">
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="forms.html">Forms</a></li>
+      <li><a href="tables.html" aria-current="page">Tables</a></li>
+      <li><a href="lists.html">Lists</a></li>
+      <li><a href="register.html">Register</a></li>
+    </ul>
+  </nav>
+
+  <main role="main">
+    <h2>HTML Tables</h2>
+
+    <!-- Basic semantic table -->
+    <section aria-labelledby="basic-table-heading">
+      <h3 id="basic-table-heading">Vulnerability Severity Overview</h3>
+      <table aria-labelledby="basic-table-heading">
+        <caption>OWASP Top 10 — Severity &amp; Priority</caption>
+        <thead>
+          <tr>
+            <th scope="col">Rank</th>
+            <th scope="col">Vulnerability</th>
+            <th scope="col">CVSS Score</th>
+            <th scope="col">Priority</th>
+            <th scope="col">Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>A01</td>
+            <td>Broken Access Control</td>
+            <td>9.8</td>
+            <td>Critical</td>
+            <td>✅ Tested</td>
+          </tr>
+          <tr>
+            <td>A02</td>
+            <td>Cryptographic Failures</td>
+            <td>9.1</td>
+            <td>Critical</td>
+            <td>✅ Tested</td>
+          </tr>
+          <tr>
+            <td>A03</td>
+            <td>Injection (SQLi/XSS)</td>
+            <td>9.8</td>
+            <td>Critical</td>
+            <td>✅ Tested</td>
+          </tr>
+          <tr>
+            <td>A04</td>
+            <td>Insecure Design</td>
+            <td>7.5</td>
+            <td>High</td>
+            <td>⏳ Pending</td>
+          </tr>
+          <tr>
+            <td>A05</td>
+            <td>Security Misconfiguration</td>
+            <td>8.6</td>
+            <td>High</td>
+            <td>✅ Tested</td>
+          </tr>
+          <tr>
+            <td>A06</td>
+            <td>Vulnerable Components</td>
+            <td>7.5</td>
+            <td>High</td>
+            <td>⏳ Pending</td>
+          </tr>
+          <tr>
+            <td>A07</td>
+            <td>Auth &amp; Session Failures</td>
+            <td>9.8</td>
+            <td>Critical</td>
+            <td>✅ Tested</td>
+          </tr>
+          <tr>
+            <td>A08</td>
+            <td>Software Integrity Failures</td>
+            <td>8.1</td>
+            <td>High</td>
+            <td>⏳ Pending</td>
+          </tr>
+          <tr>
+            <td>A09</td>
+            <td>Security Logging Failures</td>
+            <td>6.5</td>
+            <td>Medium</td>
+            <td>⏳ Pending</td>
+          </tr>
+          <tr>
+            <td>A10</td>
+            <td>SSRF</td>
+            <td>8.6</td>
+            <td>High</td>
+            <td>⏳ Pending</td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td colspan="2"><strong>Total tested</strong></td>
+            <td colspan="3">5 of 10 categories covered in this portfolio</td>
+          </tr>
+        </tfoot>
+      </table>
+    </section>
+
+    <!-- colspan / rowspan example -->
+    <section aria-labelledby="colspan-heading">
+      <h3 id="colspan-heading">Assignment Coverage Matrix (colspan &amp; rowspan)</h3>
+      <table aria-labelledby="colspan-heading">
+        <caption>Lab Coverage by Assignment and Technique</caption>
+        <thead>
+          <tr>
+            <th scope="col" rowspan="2">Assignment</th>
+            <th scope="colgroup" colspan="3">Techniques</th>
+            <th scope="col" rowspan="2">Automated</th>
+          </tr>
+          <tr>
+            <th scope="col">Recon</th>
+            <th scope="col">Exploit</th>
+            <th scope="col">Remediate</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>A1 — HTML/PHP/HTTP</td>
+            <td>✅</td><td>—</td><td>✅</td><td>Partial</td>
+          </tr>
+          <tr>
+            <td>A2 — Server Hosting</td>
+            <td>✅</td><td>✅</td><td>✅</td><td>Yes</td>
+          </tr>
+          <tr>
+            <td>A3 — Pentest</td>
+            <td>✅</td><td>✅</td><td>⏳</td><td>Yes</td>
+          </tr>
+          <tr>
+            <td>A4 — SQLi</td>
+            <td>✅</td><td>✅</td><td>✅</td><td>Yes</td>
+          </tr>
+          <tr>
+            <td>A5 — XSS</td>
+            <td>✅</td><td>✅</td><td>✅</td><td>Yes</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  </main>
+
+  <footer role="contentinfo">
+    <p>&copy; 2024 Web Security Lab Portfolio — MIT License</p>
+  </footer>
+</body>
+</html>

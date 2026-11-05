@@ -1,0 +1,1 @@
+<?php require __DIR__.'/config.php';if(empty($_SESSION['user_id'])){http_response_code(401);exit('Login required');} ?><h1>Dashboard</h1><form method="post" action="logout.php"><input type="hidden" name="csrf" value="<?=htmlspecialchars($_SESSION['csrf'],ENT_QUOTES)?>"><button>Log out</button></form>

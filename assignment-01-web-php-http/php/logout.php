@@ -1,0 +1,1 @@
+<?php require __DIR__.'/config.php';if($_SERVER['REQUEST_METHOD']!=='POST'||!hash_equals($_SESSION['csrf'],$_POST['csrf']??'')){http_response_code(400);exit('Invalid request');}session_destroy();header('Location: login.php');

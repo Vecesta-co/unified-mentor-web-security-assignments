@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Web Security Lab Portfolio - Home">
+  <title>Web Security Lab — Home</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header role="banner">
+    <h1>Web Security Lab Portfolio</h1>
+    <p class="tagline">Assignment 01 — HTML, PHP &amp; HTTP Fundamentals</p>
+  </header>
+
+  <nav role="navigation" aria-label="Main navigation">
+    <ul>
+      <li><a href="index.html" aria-current="page">Home</a></li>
+      <li><a href="forms.html">Forms</a></li>
+      <li><a href="tables.html">Tables</a></li>
+      <li><a href="lists.html">Lists</a></li>
+      <li><a href="register.html">Register</a></li>
+    </ul>
+  </nav>
+
+  <main role="main">
+    <section aria-labelledby="welcome-heading">
+      <h2 id="welcome-heading">Welcome</h2>
+      <p>This site demonstrates HTML5 fundamentals as part of a web security lab portfolio.
+         Each page explores a specific HTML concept while following accessibility and security best practices.</p>
+    </section>
+
+    <section aria-labelledby="pages-heading">
+      <h2 id="pages-heading">Pages in This Demo Site</h2>
+      <article>
+        <h3><a href="forms.html">Forms</a></h3>
+        <p>GET and POST form handling, client-side validation, pattern attributes, and ARIA labels.</p>
+      </article>
+      <article>
+        <h3><a href="tables.html">Tables</a></h3>
+        <p>Semantic tables with <code>thead</code>, <code>tbody</code>, <code>tfoot</code>,
+           <code>colspan</code>, <code>rowspan</code>, and responsive design.</p>
+      </article>
+      <article>
+        <h3><a href="lists.html">Lists</a></h3>
+        <p>Ordered, unordered, and definition lists with nested structures.</p>
+      </article>
+      <article>
+        <h3><a href="register.html">Register</a></h3>
+        <p>Multi-field registration form with file input, validation, and ARIA attributes.</p>
+      </article>
+    </section>
+
+    <section aria-labelledby="security-heading">
+      <h2 id="security-heading">⚠️ Ethics &amp; Legal Notice</h2>
+      <p><strong>This site and all associated scripts are for educational use only.</strong>
+         All testing targets are localhost/Docker containers you own. Never use offensive
+         techniques against systems you do not own or have explicit written authorization to test.</p>
+    </section>
+  </main>
+
+  <footer role="contentinfo">
+    <p>&copy; 2024 Web Security Lab Portfolio — MIT License</p>
+  </footer>
+</body>
+</html>

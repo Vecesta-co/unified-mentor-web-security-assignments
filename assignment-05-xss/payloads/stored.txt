@@ -1,0 +1,8 @@
+# Local harness context; filter target: context encoding; expected: harmless alert in vulnerable page.
+<i>stored marker</i>
+# Local harness context; filter target: context encoding; expected: harmless alert in vulnerable page.
+<img src=x onerror=alert(1)>
+# Local harness context; filter target: context encoding; expected: harmless alert in vulnerable page.
+<svg><title>x</title></svg>
+# Local harness context; filter target: context encoding; expected: harmless alert in vulnerable page.
+<details open ontoggle=alert(1)>

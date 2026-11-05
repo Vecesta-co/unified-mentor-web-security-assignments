@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="User Registration — multi-field form with file upload and validation">
+  <title>Web Security Lab — Register</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header role="banner">
+    <h1>Web Security Lab Portfolio</h1>
+    <p class="tagline">Register — Multi-field Form &amp; File Input</p>
+  </header>
+
+  <nav role="navigation" aria-label="Main navigation">
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="forms.html">Forms</a></li>
+      <li><a href="tables.html">Tables</a></li>
+      <li><a href="lists.html">Lists</a></li>
+      <li><a href="register.html" aria-current="page">Register</a></li>
+    </ul>
+  </nav>
+
+  <main role="main">
+    <h2>Create Account</h2>
+    <p>This registration form demonstrates HTML5 multi-field forms with file input,
+       client-side validation, autocomplete hints, and ARIA accessibility attributes.
+       In production, submit to a PHP back-end with server-side validation.</p>
+
+    <form method="POST" action="/php/08_forms.php" enctype="multipart/form-data"
+          aria-label="Registration form" novalidate>
+
+      <!-- Personal Information -->
+      <fieldset>
+        <legend>Personal Information</legend>
+
+        <div class="form-group">
+          <label for="reg-fname">First Name <span aria-hidden="true">*</span></label>
+          <input type="text" id="reg-fname" name="first_name"
+                 required minlength="1" maxlength="50"
+                 autocomplete="given-name"
+                 pattern="[A-Za-z\s\-']+"
+                 aria-required="true"
+                 aria-describedby="fname-hint">
+          <span id="fname-hint" class="hint">Letters and hyphens only</span>
+        </div>
+
+        <div class="form-group">
+          <label for="reg-lname">Last Name <span aria-hidden="true">*</span></label>
+          <input type="text" id="reg-lname" name="last_name"
+                 required minlength="1" maxlength="50"
+                 autocomplete="family-name"
+                 pattern="[A-Za-z\s\-']+"
+                 aria-required="true">
+        </div>
+
+        <div class="form-group">
+          <label for="reg-dob">Date of Birth</label>
+          <input type="date" id="reg-dob" name="dob"
+                 max="2006-01-01" autocomplete="bday">
+        </div>
+      </fieldset>
+
+      <!-- Account Details -->
+      <fieldset>
+        <legend>Account Details</legend>
+
+        <div class="form-group">
+          <label for="reg-username">Username <span aria-hidden="true">*</span></label>
+          <input type="text" id="reg-username" name="username"
+                 required minlength="3" maxlength="30"
+                 autocomplete="username"
+                 pattern="[a-zA-Z0-9_\-]+"
+                 aria-required="true"
+                 aria-describedby="username-hint">
+          <span id="username-hint" class="hint">3–30 characters: letters, numbers, underscores, hyphens</span>
+        </div>
+
+        <div class="form-group">
+          <label for="reg-email">Email Address <span aria-hidden="true">*</span></label>
+          <input type="email" id="reg-email" name="email"
+                 required maxlength="254"
+                 autocomplete="email"
+                 aria-required="true">
+        </div>
+
+        <div class="form-group">
+          <label for="reg-password">Password <span aria-hidden="true">*</span></label>
+          <input type="password" id="reg-password" name="password"
+                 required minlength="12" maxlength="128"
+                 autocomplete="new-password"
+                 pattern="(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&amp;]).{12,}"
+                 aria-required="true"
+                 aria-describedby="pw-hint">
+          <span id="pw-hint" class="hint">Min 12 chars with uppercase, lowercase, number, and special character</span>
+        </div>
+
+        <div class="form-group">
+          <label for="reg-confirm">Confirm Password <span aria-hidden="true">*</span></label>
+          <input type="password" id="reg-confirm" name="password_confirm"
+                 required minlength="12" maxlength="128"
+                 autocomplete="new-password"
+                 aria-required="true">
+        </div>
+      </fieldset>
+
+      <!-- Profile & Preferences -->
+      <fieldset>
+        <legend>Profile &amp; Preferences</legend>
+
+        <div class="form-group">
+          <label for="reg-bio">Biography</label>
+          <textarea id="reg-bio" name="bio" rows="4" maxlength="500"
+                    placeholder="Tell us about yourself…"
+                    aria-describedby="bio-hint"></textarea>
+          <span id="bio-hint" class="hint">Optional — max 500 characters</span>
+        </div>
+
+        <div class="form-group">
+          <label for="reg-country">Country</label>
+          <select id="reg-country" name="country" autocomplete="country">
+            <option value="">— Select country —</option>
+            <option value="US">United States</option>
+            <option value="GB">United Kingdom</option>
+            <option value="IN">India</option>
+            <option value="CA">Canada</option>
+            <option value="AU">Australia</option>
+            <option value="DE">Germany</option>
+            <option value="FR">France</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="reg-skill">Security Skill Level</label>
+          <select id="reg-skill" name="skill_level">
+            <option value="beginner">Beginner</option>
+            <option value="intermediate" selected>Intermediate</option>
+            <option value="advanced">Advanced</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="reg-avatar">Profile Picture</label>
+          <input type="file" id="reg-avatar" name="avatar"
+                 accept="image/jpeg,image/png,image/webp"
+                 aria-describedby="avatar-hint">
+          <span id="avatar-hint" class="hint">JPG, PNG, or WebP — max 2MB</span>
+        </div>
+
+        <div class="form-group">
+          <label>Interests (select all that apply)</label>
+          <label><input type="checkbox" name="interests[]" value="web"> Web Security</label>
+          <label><input type="checkbox" name="interests[]" value="network"> Network Security</label>
+          <label><input type="checkbox" name="interests[]" value="reverse"> Reverse Engineering</label>
+          <label><input type="checkbox" name="interests[]" value="crypto"> Cryptography</label>
+        </div>
+
+        <div class="form-group">
+          <label>
+            <input type="checkbox" name="agree_terms" value="1" required aria-required="true">
+            I agree to the <a href="#" target="_blank" rel="noopener">Terms of Service</a>
+            and <a href="#" target="_blank" rel="noopener">Privacy Policy</a>
+            <span aria-hidden="true">*</span>
+          </label>
+        </div>
+      </fieldset>
+
+      <button type="submit">Create Account</button>
+    </form>
+  </main>
+
+  <footer role="contentinfo">
+    <p>&copy; 2024 Web Security Lab Portfolio — MIT License</p>
+  </footer>
+</body>
+</html>

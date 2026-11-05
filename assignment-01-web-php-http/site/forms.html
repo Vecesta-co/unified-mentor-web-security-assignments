@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="HTML Forms demonstration — GET and POST methods with validation">
+  <title>Web Security Lab — Forms</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header role="banner">
+    <h1>Web Security Lab Portfolio</h1>
+    <p class="tagline">Forms — GET &amp; POST, Validation, ARIA</p>
+  </header>
+
+  <nav role="navigation" aria-label="Main navigation">
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="forms.html" aria-current="page">Forms</a></li>
+      <li><a href="tables.html">Tables</a></li>
+      <li><a href="lists.html">Lists</a></li>
+      <li><a href="register.html">Register</a></li>
+    </ul>
+  </nav>
+
+  <main role="main">
+    <h2>HTML Forms</h2>
+
+    <!-- GET Form -->
+    <section aria-labelledby="get-heading">
+      <h3 id="get-heading">Search Form (GET Method)</h3>
+      <p>GET forms append data to the URL — suitable for idempotent searches, not sensitive data.</p>
+      <form method="GET" action="#" role="search" aria-label="Search form">
+        <fieldset>
+          <legend>Search</legend>
+          <div class="form-group">
+            <label for="search-query">Search Query</label>
+            <input type="search" id="search-query" name="q"
+                   placeholder="Enter search term…"
+                   required minlength="2" maxlength="100"
+                   aria-describedby="search-hint">
+            <span id="search-hint" class="hint">At least 2 characters required</span>
+          </div>
+          <div class="form-group">
+            <label for="search-category">Category</label>
+            <select id="search-category" name="category">
+              <option value="">All categories</option>
+              <option value="html">HTML</option>
+              <option value="css">CSS</option>
+              <option value="javascript">JavaScript</option>
+              <option value="security">Security</option>
+            </select>
+          </div>
+          <button type="submit">Search</button>
+        </fieldset>
+      </form>
+    </section>
+
+    <!-- POST Form -->
+    <section aria-labelledby="post-heading">
+      <h3 id="post-heading">Contact Form (POST Method)</h3>
+      <p>POST forms send data in the request body — required for mutations and sensitive data.</p>
+      <form method="POST" action="#" aria-label="Contact form" novalidate>
+        <fieldset>
+          <legend>Contact Us</legend>
+          <div class="form-group">
+            <label for="contact-name">Full Name <span aria-hidden="true">*</span></label>
+            <input type="text" id="contact-name" name="name"
+                   required minlength="2" maxlength="80"
+                   autocomplete="name"
+                   pattern="[A-Za-z\s\-']+"
+                   aria-required="true"
+                   aria-describedby="name-hint">
+            <span id="name-hint" class="hint">Letters, spaces, hyphens, and apostrophes only</span>
+          </div>
+          <div class="form-group">
+            <label for="contact-email">Email Address <span aria-hidden="true">*</span></label>
+            <input type="email" id="contact-email" name="email"
+                   required maxlength="254"
+                   autocomplete="email"
+                   aria-required="true">
+          </div>
+          <div class="form-group">
+            <label for="contact-subject">Subject <span aria-hidden="true">*</span></label>
+            <input type="text" id="contact-subject" name="subject"
+                   required minlength="3" maxlength="120"
+                   aria-required="true">
+          </div>
+          <div class="form-group">
+            <label for="contact-message">Message <span aria-hidden="true">*</span></label>
+            <textarea id="contact-message" name="message"
+                      rows="5" required minlength="10" maxlength="2000"
+                      aria-required="true"
+                      aria-describedby="msg-hint"></textarea>
+            <span id="msg-hint" class="hint">Between 10 and 2000 characters</span>
+          </div>
+          <div class="form-group">
+            <label>
+              <input type="checkbox" name="newsletter" value="yes">
+              Subscribe to newsletter
+            </label>
+          </div>
+          <button type="submit">Send Message</button>
+        </fieldset>
+      </form>
+    </section>
+
+    <!-- Input types demonstration -->
+    <section aria-labelledby="inputs-heading">
+      <h3 id="inputs-heading">HTML5 Input Types</h3>
+      <form aria-label="Input types demo (display only)">
+        <fieldset>
+          <legend>Various Input Types</legend>
+          <div class="form-group">
+            <label for="inp-number">Number (1–100)</label>
+            <input type="number" id="inp-number" name="qty" min="1" max="100" value="1">
+          </div>
+          <div class="form-group">
+            <label for="inp-range">Range (0–10)</label>
+            <input type="range" id="inp-range" name="rating" min="0" max="10" step="1">
+          </div>
+          <div class="form-group">
+            <label for="inp-date">Date</label>
+            <input type="date" id="inp-date" name="dob">
+          </div>
+          <div class="form-group">
+            <label for="inp-color">Color</label>
+            <input type="color" id="inp-color" name="fav_color" value="#0f9b8e">
+          </div>
+          <div class="form-group">
+            <label for="inp-tel">Phone</label>
+            <input type="tel" id="inp-tel" name="phone"
+                   pattern="[0-9+\-\s()]+" placeholder="+1 555 000 0000">
+          </div>
+          <div class="form-group">
+            <label for="inp-url">URL</label>
+            <input type="url" id="inp-url" name="website" placeholder="https://example.com">
+          </div>
+        </fieldset>
+      </form>
+    </section>
+  </main>
+
+  <footer role="contentinfo">
+    <p>&copy; 2024 Web Security Lab Portfolio — MIT License</p>
+  </footer>
+</body>
+</html>

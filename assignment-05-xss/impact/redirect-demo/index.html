@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contained Phishing Simulation — Educational Demo</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #e5e7eb; display: flex; align-items: center; justify-content: center; height: 100vh; margin: 0; }
+        .banner { position: fixed; top: 0; left: 0; right: 0; background: #b91c1c; color: white; text-align: center; padding: 0.5rem; font-weight: bold; font-size: 0.875rem; letter-spacing: 0.05em; z-index: 1000; }
+        .login-box { background: white; padding: 2.5rem; border-radius: 8px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); width: 100%; max-width: 400px; }
+        h2 { margin-top: 0; color: #1f2937; text-align: center; }
+        .subtitle { font-size: 0.875rem; color: #6b7280; text-align: center; margin-bottom: 1.5rem; }
+        label { display: block; margin-bottom: 0.5rem; font-size: 0.875rem; color: #374151; font-weight: 500; }
+        input[type="text"], input[type="password"] { width: 100%; padding: 0.75rem; border: 1px solid #d1d5db; border-radius: 4px; box-sizing: border-box; margin-bottom: 1.25rem; }
+        button { width: 100%; padding: 0.75rem; background: #2563eb; color: white; border: none; border-radius: 4px; font-weight: 600; cursor: pointer; }
+        button:hover { background: #1d4ed8; }
+        .notice { margin-top: 1.5rem; padding: 0.75rem; background: #fef3c7; border: 1px solid #f59e0b; border-radius: 4px; font-size: 0.75rem; color: #92400e; }
+    </style>
+</head>
+<body>
+    <div class="banner">⚠️ WARNING: THIS IS AN INTENTIONALLY CONTAINED LOCALHOST PHISHING DEMO FOR WEB SECURITY LAB ⚠️</div>
+    
+    <div class="login-box">
+        <h2>Single Sign-On (Simulated)</h2>
+        <div class="subtitle">Session timed out. Please verify your credentials to continue.</div>
+
+        <form id="fakeLoginForm" onsubmit="event.preventDefault(); simulateCapture();">
+            <label for="username">Username or Corporate Email</label>
+            <input type="text" id="username" required placeholder="admin@lab.localhost">
+
+            <label for="password">Password</label>
+            <input type="password" id="password" required placeholder="••••••••••••">
+
+            <button type="submit">Verify &amp; Resume Session</button>
+        </form>
+
+        <div class="notice">
+            <strong>Lab Impact Demonstration:</strong><br>
+            Triggered by XSS redirect payload:<br>
+            <code>&lt;script&gt;window.location='http://127.0.0.1:8081/impact/redirect-demo/';&lt;/script&gt;</code><br>
+            Demonstrates how client script execution bypasses Same-Origin Policy defenses by redirecting the user to a lookalike interface.
+        </div>
+    </div>
+
+    <script>
+        function simulateCapture() {
+            const user = document.getElementById('username').value;
+            alert("[DEMO HARNESS NOTICE]\n\nPhishing credential capture intercepted on localhost!\nUsername: " + user + "\nPassword: [REDACTED]\n\nIn a real-world attack, this would exfiltrate credentials to an attacker server.");
+        }
+    </script>
+</body>
+</html>
+
