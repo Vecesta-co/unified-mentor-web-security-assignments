@@ -7,7 +7,6 @@ A comprehensive, public, portfolio-grade cybersecurity laboratory and technical 
 > Maintained & engineered under my company **[vecesta.co](https://vecesta.co)**.  
 > 
 > 📄 **Official Internship PDF Brief:** [docs/Unified_Mentor_Assignment_Brief.pdf](docs/Unified_Mentor_Assignment_Brief.pdf)  
-> 🔗 **Reference Implementation:** [adityasasikumar422-ui/ASSIGNMENT-1-WEB-TECHNOLOGIES](https://github.com/adityasasikumar422-ui/ASSIGNMENT-1-WEB-TECHNOLOGIES)
 
 ---
 
