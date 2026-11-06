@@ -1,0 +1,300 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 3 0 R >>
+endobj
+2 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+3 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold >>
+endobj
+4 0 obj
+<< /Type /Pages /Kids [8 0 R 9 0 R 10 0 R 11 0 R 12 0 R] /Count 5 >>
+endobj
+5 0 obj
+<< /Length 1458 >>
+stream
+BT
+/F1 10 Tf
+50 750 Td
+14 TL
+/F2 12 Tf
+(ASSIGNMENT 1: WEB TECHNOLOGIES FUNDAMENTALS) Tj T*
+/F1 10 Tf
+/F2 10 Tf
+(Duration: 3-4 hours) Tj T*
+/F1 10 Tf
+/F2 10 Tf
+(Learning Outcomes: HTML/PHP basics, web application architecture, client-server interaction) Tj T*
+/F1 10 Tf
+() Tj T*
+/F2 12 Tf
+(Tasks:) Tj T*
+/F1 10 Tf
+(1. Build basic HTML pages:) Tj T*
+(   - Create 5 different HTML pages with forms, tables, lists) Tj T*
+(   - Practice GET and POST methods) Tj T*
+(   - Use browser developer tools to inspect HTML elements) Tj T*
+(   - Modify page content using browser console) Tj T*
+() Tj T*
+(2. PHP scripting practice:) Tj T*
+(   - Install XAMPP/WAMP on Windows or LAMP on Linux) Tj T*
+(   - Create 10 basic PHP scripts \(variables, loops, functions\)) Tj T*
+(   - Build simple login form with PHP backend) Tj T*
+(   - Practice  and  variable handling) Tj T*
+(   - Connect PHP to MySQL database) Tj T*
+() Tj T*
+(3. Understand web request/response:) Tj T*
+(   - Use Burp Suite to intercept HTTP requests) Tj T*
+(   - Modify GET/POST parameters in real-time) Tj T*
+(   - Observe cookies and session tokens) Tj T*
+(   - Analyze HTTP headers \(User-Agent, Content-Type, etc.\)) Tj T*
+() Tj T*
+(4. Source code analysis:) Tj T*
+(   - View page source on 10 different websites) Tj T*
+(   - Find hidden fields, comments, and sensitive information) Tj T*
+(   - Identify web technologies using Wappalyzer) Tj T*
+(   - Extract form actions and input validation) Tj T*
+ET
+endstream
+endobj
+6 0 obj
+<< /Length 1400 >>
+stream
+BT
+/F1 10 Tf
+50 750 Td
+14 TL
+/F2 12 Tf
+(ASSIGNMENT 2: WEB SERVER HOSTING LAB) Tj T*
+/F1 10 Tf
+/F2 10 Tf
+(Duration: 3-4 hours) Tj T*
+/F1 10 Tf
+/F2 10 Tf
+(Learning Outcomes: Virtual/live server setup, web hosting configuration, server hardening) Tj T*
+/F1 10 Tf
+() Tj T*
+/F2 12 Tf
+(Tasks:) Tj T*
+/F1 10 Tf
+(1. Local virtual server setup:) Tj T*
+(   - Install Apache web server on Kali Linux) Tj T*
+(   - Configure virtual hosts for multiple sites) Tj T*
+(   - Host DVWA on local Apache server) Tj T*
+(   - Set up PHP and MySQL services) Tj T*
+(   - Test access from other VMs in your network) Tj T*
+() Tj T*
+(2. Cloud hosting experience:) Tj T*
+(   - Sign up for free tier hosting \(000webhost, InfinityFree, or similar\)) Tj T*
+(   - Upload simple PHP application via FTP) Tj T*
+(   - Configure database through cPanel/phpMyAdmin) Tj T*
+(   - Access your live hosted application) Tj T*
+() Tj T*
+(3. Server configuration exploration:) Tj T*
+(   - Locate and modify Apache configuration files) Tj T*
+(   - Enable/disable directory listing) Tj T*
+(   - Configure .htaccess for URL rewriting) Tj T*
+(   - Set up error pages \(403, 404, 500\)) Tj T*
+() Tj T*
+(4. Security misconfiguration testing:) Tj T*
+(   - Test for exposed phpinfo\(\) pages) Tj T*
+(   - Check for backup files \(.bak, .old, .zip\)) Tj T*
+(   - Verify directory traversal protection) Tj T*
+(   - Test file upload restrictions) Tj T*
+ET
+endstream
+endobj
+7 0 obj
+<< /Length 1261 >>
+stream
+BT
+/F1 10 Tf
+50 750 Td
+14 TL
+/F2 12 Tf
+(ASSIGNMENT 3: WEB APPLICATION PENETRATION TESTING) Tj T*
+/F1 10 Tf
+/F2 10 Tf
+(Duration: 4-5 hours) Tj T*
+/F1 10 Tf
+/F2 10 Tf
+(Learning Outcomes: OWASP Top 10, vulnerability scanning, manual testing techniques) Tj T*
+/F1 10 Tf
+() Tj T*
+/F2 12 Tf
+(Tasks:) Tj T*
+/F1 10 Tf
+(1. DVWA security levels progression:) Tj T*
+(   - Complete all challenges at Low security level) Tj T*
+(   - Progress to Medium security level) Tj T*
+(   - Document what changed between levels) Tj T*
+(   - Attempt High security level challenges) Tj T*
+() Tj T*
+(2. Complete TryHackMe web hacking rooms:) Tj T*
+(   - OWASP Top 10 room) Tj T*
+(   - Injection room) Tj T*
+(   - Web Fundamentals room) Tj T*
+(   - Authentication Bypass room) Tj T*
+(   - Complete at least 3 web hacking challenges) Tj T*
+() Tj T*
+(3. Use automated scanners:) Tj T*
+(   - Run Nikto against DVWA) Tj T*
+(   - Use OWASP ZAP active scan) Tj T*
+(   - Compare results from both scanners) Tj T*
+(   - Manually verify all findings) Tj T*
+() Tj T*
+(4. Manual testing methodology:) Tj T*
+(   - Test all input fields for validation) Tj T*
+(   - Manipulate cookies and session tokens) Tj T*
+(   - Test file upload functionality) Tj T*
+(   - Check for information disclosure) Tj T*
+ET
+endstream
+endobj
+8 0 obj
+<< /Length 1652 >>
+stream
+BT
+/F1 10 Tf
+50 750 Td
+14 TL
+/F2 12 Tf
+(ASSIGNMENT 4: SQL INJECTION MASTERY) Tj T*
+/F1 10 Tf
+/F2 10 Tf
+(Duration: 4-5 hours) Tj T*
+/F1 10 Tf
+/F2 10 Tf
+(Learning Outcomes: SQL injection types, exploitation techniques, database enumeration) Tj T*
+/F1 10 Tf
+() Tj T*
+/F2 12 Tf
+(Tasks:) Tj T*
+/F1 10 Tf
+(1. Basic SQL injection in DVWA:) Tj T*
+(   - Identify SQL injection points) Tj T*
+(   - Bypass authentication using SQL injection) Tj T*
+(   - Extract data from database tables) Tj T*
+(   - Use comment characters to bypass filters) Tj T*
+() Tj T*
+(2. Union-based SQL injection:) Tj T*
+(   - Determine number of columns using ORDER BY) Tj T*
+(   - Use UNION SELECT to combine results) Tj T*
+(   - Enumerate database names) Tj T*
+(   - Extract table names from information_schema) Tj T*
+(   - Dump usernames and passwords) Tj T*
+() Tj T*
+(3. Error-based SQL injection:) Tj T*
+(   - Trigger SQL errors intentionally) Tj T*
+(   - Extract database version from errors) Tj T*
+(   - Use error messages to enumerate structure) Tj T*
+(   - Practice on DVWA Medium security level) Tj T*
+() Tj T*
+(4. Automated SQL injection with SQLMap:) Tj T*
+(   - Capture request with Burp Suite) Tj T*
+(   - Run SQLMap against vulnerable parameter) Tj T*
+(   - Enumerate databases and tables automatically) Tj T*
+(   - Extract specific data using SQLMap options) Tj T*
+(   - Compare manual vs automated results) Tj T*
+() Tj T*
+(5. Blind SQL injection:) Tj T*
+(   - Practice boolean-based blind injection) Tj T*
+(   - Use time-based blind injection techniques) Tj T*
+(   - Extract data character by character) Tj T*
+(   - Automate blind injection with custom scripts) Tj T*
+ET
+endstream
+endobj
+9 0 obj
+<< /Length 1646 >>
+stream
+BT
+/F1 10 Tf
+50 750 Td
+14 TL
+/F2 12 Tf
+(ASSIGNMENT 5: CROSS-SITE SCRIPTING \(XSS\) EXPLOITATION) Tj T*
+/F1 10 Tf
+/F2 10 Tf
+(Duration: 3-4 hours) Tj T*
+/F1 10 Tf
+/F2 10 Tf
+(Learning Outcomes: XSS types, payload crafting, exploitation impact) Tj T*
+/F1 10 Tf
+() Tj T*
+/F2 12 Tf
+(Tasks:) Tj T*
+/F1 10 Tf
+(1. Reflected XSS practice:) Tj T*
+(   - Identify reflection points in DVWA) Tj T*
+(   - Test basic XSS payloads: <script>alert\(1\)</script>) Tj T*
+(   - Bypass client-side filters) Tj T*
+(   - Craft working payloads for different contexts) Tj T*
+(   - Steal cookies using XSS) Tj T*
+() Tj T*
+(2. Stored XSS exploitation:) Tj T*
+(   - Find stored XSS in guestbook/comments) Tj T*
+(   - Create persistent XSS payloads) Tj T*
+(   - Demonstrate impact with cookie stealing) Tj T*
+(   - Use BeEF \(Browser Exploitation Framework\)) Tj T*
+(   - Hook victim browsers using XSS) Tj T*
+() Tj T*
+(3. DOM-based XSS:) Tj T*
+(   - Identify client-side JavaScript vulnerabilities) Tj T*
+(   - Test DOM manipulation payloads) Tj T*
+(   - Practice on PortSwigger Web Security Academy) Tj T*
+(   - Understand difference from reflected XSS) Tj T*
+() Tj T*
+(4. XSS payload variations:) Tj T*
+(   - Test 20+ different XSS payloads) Tj T*
+(   - Bypass filters using encoding \(URL, HTML entities\)) Tj T*
+(   - Use event handlers \(onerror, onload, onclick\)) Tj T*
+(   - Test polyglot payloads) Tj T*
+(   - Practice on XSS game challenges) Tj T*
+() Tj T*
+(5. XSS impact demonstration:) Tj T*
+(   - Capture keystrokes using XSS) Tj T*
+(   - Redirect users to phishing pages) Tj T*
+(   - Deface web pages temporarily) Tj T*
+(   - Exfiltrate sensitive data) Tj T*
+ET
+endstream
+endobj
+10 0 obj
+<< /Type /Page /Parent 3 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 1 0 R /F2 2 0 R >> >> /Contents 3 0 R >>
+endobj
+11 0 obj
+<< /Type /Page /Parent 3 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 1 0 R /F2 2 0 R >> >> /Contents 4 0 R >>
+endobj
+12 0 obj
+<< /Type /Page /Parent 3 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 1 0 R /F2 2 0 R >> >> /Contents 5 0 R >>
+endobj
+13 0 obj
+<< /Type /Page /Parent 3 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 1 0 R /F2 2 0 R >> >> /Contents 6 0 R >>
+endobj
+14 0 obj
+<< /Type /Page /Parent 3 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 1 0 R /F2 2 0 R >> >> /Contents 7 0 R >>
+endobj
+xref
+0 15
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000128 00000 n 
+0000000203 00000 n 
+0000000287 00000 n 
+0000001797 00000 n 
+0000003249 00000 n 
+0000004562 00000 n 
+0000006266 00000 n 
+0000007964 00000 n 
+0000008101 00000 n 
+0000008238 00000 n 
+0000008375 00000 n 
+0000008512 00000 n 
+trailer
+<< /Size 15 /Root 1 0 R >>
+startxref
+8649
+%%EOF

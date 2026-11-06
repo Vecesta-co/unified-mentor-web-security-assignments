@@ -57,3 +57,4 @@ This report fulfills the Task 4 requirements:
 1. **Hidden Fields are Public**: Hidden input fields are completely visible to end users and attackers via page source inspection. Storing sensitive data, pricing, or authorization role flags in hidden fields without cryptographic server verification introduces critical vulnerabilities.
 2. **Comment Hygiene**: HTML comments can disclose internal paths, API test credentials, and architecture hints to reconnaissance tools like `extractor.py`. Automated CI build pipelines must strip comments prior to public deployment.
 3. **Wappalyzer Fingerprint Mitigation**: Hardened web servers suppress disclosure headers (`ServerTokens Prod`, `Header unset X-Powered-By`) to raise the cost of reconnaissance for attackers.
+

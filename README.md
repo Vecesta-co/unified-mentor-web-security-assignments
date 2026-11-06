@@ -1,11 +1,19 @@
-# Web Security Lab Portfolio
+# Unified Mentor Web Security Assignments Lab Portfolio
 
-A comprehensive, public, portfolio-grade cybersecurity laboratory and research repository implementing five structured web-security lab assignments (A1–A5). Engineered with reproducibility, defense-in-depth principles, and strict ethical constraints at its core, this project features Dockerized testbeds, defensive full-stack PHP applications, custom Python exploit engines with hardcoded loopback allowlists, automated DAST correlation tooling, headless browser XSS test harnesses, and technical research reports.
+A comprehensive, public, portfolio-grade cybersecurity laboratory and technical research repository implementing all five structured web-security assignments (**A1–A5**) from the official **Unified Mentor Internship Program**.
 
 > 🚀 **Internship & Founder Spotlight:**  
 > This repository represents the foundational cybersecurity and web technology assignment project completed during my **first internship at the age of 17 at [Unified Mentor](https://unifiedmentor.com/)**.  
 > Maintained & engineered under my company **[vecesta.co](https://vecesta.co)**.  
-> *Reference Repository:* [adityasasikumar422-ui/ASSIGNMENT-1-WEB-TECHNOLOGIES](https://github.com/adityasasikumar422-ui/ASSIGNMENT-1-WEB-TECHNOLOGIES)
+> 
+> 📄 **Official Internship PDF Brief:** [docs/Unified_Mentor_Assignment_Brief.pdf](docs/Unified_Mentor_Assignment_Brief.pdf)  
+> 🔗 **Reference Implementation:** [adityasasikumar422-ui/ASSIGNMENT-1-WEB-TECHNOLOGIES](https://github.com/adityasasikumar422-ui/ASSIGNMENT-1-WEB-TECHNOLOGIES)
+
+---
+
+## 🧭 Project Architecture & Methodological Approach
+
+This repository bridges offensive vulnerability exploitation with defensive software engineering. Our core approach is built around a closed-loop **Build → Test → Adversarial Review → Document** workflow:
 
 ```mermaid
 flowchart TD
@@ -18,7 +26,7 @@ flowchart TD
     subgraph DockerEnv["Docker Compose Lab Network (172.28.0.0/16)"]
         subgraph TargetGroup["Localhost Target Services (127.0.0.1 Only)"]
             DVWA["DVWA Service\n(:8080)\nDamn Vulnerable Web App"]
-            PHPApp["Hardened PHP-Apache App\n(:8081 / :8082)\nCustom VHosts"]
+            PHPApp["Hardened PHP-Apache App\n(:8081 / :8082)\nCustom Dual VHosts"]
             MySQL["MySQL 8.0 Daemon\n(:3306)\nRelational Backend"]
         end
 
@@ -38,55 +46,58 @@ flowchart TD
     BeEF -.->|Simulated Telemetry| PHPApp
 ```
 
----
-
-## ⚠️ Hard Scope, Legal & Ethics Notice
-
-> **IMPORTANT:** All offensive techniques, payloads, exploit scripts, and scanning tools in this repository are strictly designed for educational and authorized defensive training.
-> - **Targets**: All automated scripts strictly enforce a hardcoded target allowlist containing only `127.0.0.1`, `localhost`, `dvwa`, and `php-apache`. Any attempt to target external domains causes immediate execution termination.
-> - **Exposure**: DVWA and lab containers are intentionally vulnerable and **must never be internet-exposed**. Port bindings are restricted to `127.0.0.1`.
-> - **Integrity**: In accordance with the project evidence policy, this repository never fabricates command outputs or screenshots. Automated runs are marked `AUTOMATED-PASS`, while manual GUI/remote tasks are accurately designated `[HUMAN-EXECUTED — PENDING]` or `NOT APPLICABLE (GUI/LIVE)`.
-> - **Secrets**: No real passwords, credentials, or private API keys exist in this codebase. All references use `.env.example` placeholders.
+### Key Engineering & Educational Principles:
+1. **Defense-in-Depth Implementation:** Every vulnerable demonstration (in DVWA or testbed pages) is directly paired with production-grade mitigations (e.g., PDO prepared statements, input constraints, CSRF token validation, `HttpOnly`/`SameSite` session cookies, and path boundary enforcement).
+2. **Strict Loopback Target Allowlist:** All automation scripts (`http_probe.py`, `check_misconfig.py`, `upload_test.py`, `blind_boolean.py`, `blind_time.py`) enforce hardcoded allowlists (`127.0.0.1`, `localhost`, `dvwa`, `php-apache`). Any request targeting external networks immediately aborts with an exit code 1.
+3. **Truth-in-Documentation Policy:** All test logs and command results are genuine. Unexecuted manual tasks (such as live GUI interceptions in Burp Suite or external TryHackMe rooms) are explicitly labeled `[HUMAN-EXECUTED — PENDING]` or `NOT APPLICABLE (GUI/LIVE)` with step-by-step reproduction templates provided.
 
 ---
 
-## Quickstart
+## 📚 Overview of Completed Assignment Projects
+
+| Assignment Module | Domain Focus | Key Projects & Deliverables | Verification Status | Report Link |
+| :--- | :--- | :--- | :---: | :--- |
+| **Assignment 01** | **Web Technologies Fundamentals** | • 5 accessible HTML5 pages with form validation, tables, lists<br>• 10 modular PHP scripts (syntax to PDO)<br>• Secure login system with bcrypt & CSRF<br>• HTTP Request Probe with Burp proxy support<br>• DOM & comment extractor + 10-websites audit | `AUTOMATED-PASS` | [`reports/assignment-01-report.md`](reports/assignment-01-report.md) |
+| **Assignment 02** | **Web Server Hosting Lab** | • Apache dual virtual hosts (`site-a.conf`, `site-b.conf`)<br>• Directory listing controls (`+Indexes` vs `-Indexes`)<br>• Custom error pages (403, 404, 500) & hardened `.htaccess`<br>• Misconfiguration auditor & file upload bypass fuzzer<br>• Cloud hosting cPanel/FTP deployment guide & sample app | `AUTOMATED-PASS` | [`reports/assignment-02-report.md`](reports/assignment-02-report.md) |
+| **Assignment 03** | **Web Application Penetration Testing** | • Containerized Nikto & OWASP ZAP scan wrappers<br>• Scanner correlation engine (CSV + JSON normalizer)<br>• OWASP Top 10 step-by-step testing checklist<br>• DVWA Low vs Medium vs High source diff matrix<br>• TryHackMe room logs & CVSS 3.1 scoring guide | `AUTOMATED-PASS` | [`reports/assignment-03-report.md`](reports/assignment-03-report.md) |
+| **Assignment 04** | **SQL Injection Mastery** | • Curated payload dictionaries (auth, union, error, blind)<br>• SQLMap automated cookbook & execution wrapper<br>• Custom Python Boolean & Time-based blind extractors<br>• Pytest unit test suite for extraction algorithms<br>• Low, Medium, High DVWA exploitation walkthroughs | `AUTOMATED-PASS` | [`reports/assignment-04-report.md`](reports/assignment-04-report.md) |
+| **Assignment 05** | **Cross-Site Scripting (XSS) Exploitation** | • 25+ curated payloads across all contexts + cheatsheet<br>• 7 contextual vulnerable harness pages<br>• Playwright automated headless browser test matrix<br>• Contained cookie stealer, keylogger & redirect demos<br>• BeEF Docker setup, hook guides & PortSwigger lab notes | `AUTOMATED-PASS` | [`reports/assignment-05-report.md`](reports/assignment-05-report.md) |
+
+---
+
+## ⚡ Quickstart & Local Reproduction
 
 ### Prerequisites
-- [Docker Desktop](https://docs.docker.com/get-docker/) (v24.x+) & Docker Compose
+- [Docker Desktop](https://docs.docker.com/get-docker/) & Docker Compose
 - [Python 3.10+](https://www.python.org/downloads/)
-- [PHP 8.1+ CLI](https://www.php.net/) (for local linting; or run via container)
 - [Git](https://git-scm.com/)
 
-### 1. Clone & Configure Environment
+### 1. Clone & Configure
 ```bash
-git clone https://github.com/YOUR_USERNAME/web-security-lab-portfolio.git
-cd web-security-lab-portfolio
+git clone https://github.com/YOUR_USERNAME/unified-mentor-web-security-assignments.git
+cd unified-mentor-web-security-assignments
 cp .env.example .env
 ```
 
-### 2. Launch Local Lab Containers
+### 2. Launch Docker Services
 ```bash
 make up
+# Or: docker-compose up -d --build
 ```
-*(On Windows systems using Docker Compose v2 standalone, invoke `docker-compose up -d --build`)*
 
 ### 3. Service Access Endpoints
-| Service | URL | Default / Seed Credentials |
+| Service | Localhost URL | Credentials / Notes |
 | :--- | :--- | :--- |
 | **DVWA** | [http://localhost:8080](http://localhost:8080) | `admin` / `password` |
-| **Hardened Lab App (Site A)** | [http://localhost:8081](http://localhost:8081) | `demo_user` / `Demo@Password123!` |
-| **Vulnerable XSS Harness (Site B)** | [http://localhost:8082](http://localhost:8082) | N/A (Vulnerable testbed) |
-| **OWASP ZAP API** | [http://localhost:8090](http://localhost:8090) | API Key in `.env` |
+| **Hardened Training Site (Site A)** | [http://localhost:8081](http://localhost:8081) | `demo_user` / `Demo@Password123!` |
+| **Vulnerable Testbed (Site B)** | [http://localhost:8082](http://localhost:8082) | XSS testing sandbox |
+| **OWASP ZAP API** | [http://localhost:8090](http://localhost:8090) | API key in `.env` |
 | **BeEF Management Console** | [http://localhost:3000/ui/panel](http://localhost:3000/ui/panel) | `beef` / Configured in `.env` |
 
-### 4. Execute Test Suite
+### 4. Run Test Harness
 ```bash
 make test
-```
-Or run pytest directly:
-```bash
-pytest -v
+# Or: pytest -v
 ```
 
 ### 5. Tear Down Environment
@@ -97,10 +108,9 @@ make reset      # Reset database volumes and restart fresh
 
 ---
 
-## Repository Map
+## 📁 Repository Map
 
 ```
-web-security-lab-portfolio/
 ├── README.md                           # Master repository documentation & architecture
 ├── LICENSE                             # MIT Open Source License
 ├── SECURITY.md                         # Ethics policy, disclosure policy & scope rules
@@ -111,6 +121,7 @@ web-security-lab-portfolio/
 ├── docker-compose.yml                  # Pinned services (dvwa, mysql, php-apache, zap, beef)
 ├── .github/workflows/ci.yml            # GitHub Actions CI workflow
 ├── docs/                               # Core foundational methodology documentation
+│   ├── Unified_Mentor_Assignment_Brief.pdf # Official Unified Mentor Assignment PDF
 │   ├── SETUP.md                        # Prerequisites & clean-machine setup guide
 │   ├── METHODOLOGY.md                  # Build-test-review-fix development protocol
 │   ├── EVIDENCE-POLICY.md              # Evidence labeling & artifact verification standard
@@ -165,42 +176,19 @@ web-security-lab-portfolio/
 
 ---
 
-## Assignment Summary & Status Table
+## 🛡️ Security & Ethics Notice
 
-| Assignment | Focus Areas | Automated Artifacts | Status | Evidence Reference |
-| :--- | :--- | :--- | :---: | :--- |
-| **A1: Web Tech** | HTML5, PHP 8.x, HTTP Protocol | Site markup, 10 PHP scripts, Auth system, HTTP probe, Extractor, 10-sites audit | `AUTOMATED-PASS` | [`reports/assignment-01-report.md`](reports/assignment-01-report.md) |
-| **A2: Hosting** | VHosts, Hardening, Misconfigurations | Apache vhosts, Error pages, Misconfig scanner, Upload fuzzer | `AUTOMATED-PASS` | [`reports/assignment-02-report.md`](reports/assignment-02-report.md) |
-| **A3: Pentest** | OWASP Top 10, DAST Scanners, DVWA | Scanner scripts, Result correlation engine, Level diff matrix | `AUTOMATED-PASS` | [`reports/assignment-03-report.md`](reports/assignment-03-report.md) |
-| **A4: SQLi** | Union, Error, Blind SQL Injection | Payload libraries, Custom Boolean & Time extractors, Unit tests | `AUTOMATED-PASS` | [`reports/assignment-04-report.md`](reports/assignment-04-report.md) |
-| **A5: XSS** | Reflected, Stored, DOM XSS, Impact | 25+ Payloads, 7 test pages, Playwright matrix, 3 impact servers | `AUTOMATED-PASS` | [`reports/assignment-05-report.md`](reports/assignment-05-report.md) |
+This project is strictly for authorized educational and defensive training purposes.
+- All testing targets are localhost / Docker containers you own (`127.0.0.1`, `localhost`, `dvwa`, `php-apache`).
+- Never target real third-party domains or internet-exposed applications.
+- DVWA and testbed containers are intentionally vulnerable and must never be exposed to public networks.
+- No real credentials, API tokens, or secrets exist in this repository (`.env.example` placeholders only).
 
 ---
 
-## Tool Versions
+## 👤 About the Author & Company
 
-| Component | Pinned Version | Execution Scope |
-| :--- | :--- | :--- |
-| **MySQL Daemon** | `mysql:8.0.36` | Docker container backend |
-| **DVWA** | `ghcr.io/digininja/dvwa:latest` | Docker target application |
-| **PHP-Apache** | `php:8.2-apache` | Docker custom multi-vhost host |
-| **OWASP ZAP** | `ghcr.io/zaproxy/zaproxy:stable` | Dockerized DAST scanning proxy |
-| **BeEF** | `bcarvajal/beef-xss:latest` | Docker browser exploitation engine |
-| **Python** | `3.11.x` | Local automation, tests, extractors |
-| **pytest** | `9.2.x` | Unit test execution |
-| **Playwright** | `1.40.x` | Headless browser XSS validation |
-
----
-
-## About the Author & Project
-
-This project was developed by the founder of **[vecesta.co](https://vecesta.co)** as an official assignment portfolio during an internship at **Unified Mentor** at the age of 17. The portfolio demonstrates technical excellence in secure software engineering, penetration testing, containerization, and defensive systems architecture.
-
-Reference implementation: [ASSIGNMENT-1-WEB-TECHNOLOGIES](https://github.com/adityasasikumar422-ui/ASSIGNMENT-1-WEB-TECHNOLOGIES)
-
----
-
-## License
-
-This repository is licensed under the [MIT License](LICENSE).
-All security educational materials and source code are provided without warranty for authorized training only.
+- **Company:** [vecesta.co](https://vecesta.co)
+- **Author:** Founder & Security Researcher
+- **Context:** Project developed at age 17 during an internship at **[Unified Mentor](https://unifiedmentor.com/)**.
+- **License:** [MIT License](LICENSE)
